@@ -140,6 +140,11 @@
       border-left: 4px solid var(--peach); padding-left: 24px;
     }
     .thesis p { color: rgba(247,244,237,0.82); max-width: 60ch; font-size: 1.08rem; }
+    .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 44px; margin: 32px 0 26px; }
+    @media (max-width: 680px) { .diff-grid { grid-template-columns: 1fr; gap: 22px; } }
+    .diff-item strong { display: block; font-family: "Poppins", sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--peach); margin-bottom: 5px; }
+    .diff-item p { color: rgba(247,244,237,0.82); font-size: 0.97rem; margin: 0; max-width: none; }
+    .diff-close { font-family: "Poppins", sans-serif; font-weight: 500; color: var(--cream) !important; font-size: 1.12rem !important; border-top: 1px solid rgba(247,244,237,0.18); padding-top: 24px; max-width: 64ch; }
 
     /* offerings grid */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-top: 44px; }
@@ -184,7 +189,7 @@
     <div class="wrap">
       <div class="brand">Seymour<span>&nbsp;Works</span></div>
       <div class="nav-links">
-        <a href="#thesis">Approach</a>
+        <a href="#thesis">Why me</a>
         <a href="#work">What I Do</a>
         <a href="#about">About</a>
         <a href="#contact" class="nav-cta">Get in touch</a>
@@ -231,14 +236,27 @@
     <div class="wrap">
       <div class="thesis">
         <div class="wrap thesis-inner">
-          <div class="section-tag">How I work</div>
-          <h2>Senior product discipline, applied to AI.</h2>
-          <blockquote>I ship LLM features that actually work &mdash; from problem definition through experimentation to rollout.</blockquote>
-          <p>
-            I've spent my career shipping AI products at scale: supervised-LLM tools for K&ndash;12 teachers at Amplify, Minecraft Education at Mojang, interactive learning at the Smithsonian.
-            I bring real product-management rigor &mdash; user research, KPI frameworks, experimentation, and ruthless prioritization &mdash; to AI work that too often skips it. And because I ground decisions in learning science,
-            the AI I help teams build improves outcomes, not just engagement metrics. <em>(I write about that idea under the banner &ldquo;Beyond Gamification.&rdquo;)</em>
-          </p>
+          <div class="section-tag">Why me</div>
+          <h2>Four disciplines, rarely in one person.</h2>
+          <div class="diff-grid">
+            <div class="diff-item">
+              <strong>AI product management</strong>
+              <p>Shipped AI-powered tools for K&ndash;12 teachers at Amplify &mdash; problem definition, experimentation, and rollout, end to end.</p>
+            </div>
+            <div class="diff-item">
+              <strong>Learning science</strong>
+              <p>Every decision grounded in how people actually learn &mdash; so the work improves real outcomes, not just engagement.</p>
+            </div>
+            <div class="diff-item">
+              <strong>Game design</strong>
+              <p>M.A. Game Design and adjunct professor at American University; Minecraft Education at Mojang, used by tens of millions.</p>
+            </div>
+            <div class="diff-item">
+              <strong>Institutional &amp; government</strong>
+              <p>Smithsonian Lead Digital Producer; DoD inter-agency and foundation-funded education work.</p>
+            </div>
+          </div>
+          <p class="diff-close">Plenty of people have one of these. A few have two. Building AI that genuinely improves learning takes all four &mdash; and knowing how they fit together.</p>
         </div>
       </div>
     </div>
