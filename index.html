@@ -10,6 +10,11 @@
   <meta property="og:title" content="Seymour Works — Practical AI for High-Impact Learning" />
   <meta property="og:description" content="Bridging the gap between LLM technology and learning science. Fractional AI product leadership, strategic audits, and educator enablement." />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon (inline SVG monogram — no file needed) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232D3D43'/%3E%3Ctext x='16' y='22' font-family='Poppins,sans-serif' font-size='15' font-weight='700' fill='%23F0C9BD' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -72,7 +77,16 @@
       padding: 9px 18px; border-radius: 999px; font-weight: 600 !important;
     }
     .nav-cta:hover { background: var(--slate-soft); }
-    @media (max-width: 680px) { .nav-links a:not(.nav-cta) { display: none; } }
+    @media (max-width: 680px) { .nav-links { gap: 14px; } .nav-links a:not(.nav-cta) { font-size: 0.82rem; } }
+    @media (max-width: 460px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+    /* ---------- TRUST STRIP ---------- */
+    .trust-strip { border-bottom: 1px solid var(--line); background: var(--cream-2); padding: 22px 0; }
+    .trust-strip .wrap { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    .trust-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sage-deep); white-space: nowrap; }
+    .trust-items { display: flex; gap: 26px; flex-wrap: wrap; align-items: center; }
+    .trust-items span { font-family: "Poppins", sans-serif; font-size: 0.92rem; font-weight: 500; color: var(--slate-soft); }
+    @media (max-width: 680px) { .trust-items { gap: 16px; } .trust-items span { font-size: 0.82rem; } }
 
     /* ---------- HERO ---------- */
     .hero { position: relative; overflow: hidden; padding: 110px 0 90px; }
@@ -197,18 +211,32 @@
     </div>
   </header>
 
-  <!-- THESIS -->
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="wrap">
+      <span class="trust-label">Background &amp; recognition</span>
+      <div class="trust-items">
+        <span>Amplify</span>
+        <span>Mojang &middot; Minecraft Education</span>
+        <span>Smithsonian</span>
+        <span>American University</span>
+        <span>Webby Awards &mdash; Judge</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPROACH -->
   <section id="thesis" style="padding-top:0;">
     <div class="wrap">
       <div class="thesis">
         <div class="wrap thesis-inner">
-          <div class="section-tag">The thesis &mdash; &ldquo;Beyond Gamification&rdquo;</div>
-          <h2>AI in education is about to repeat the gamification mistake.</h2>
-          <blockquote>&ldquo;Gamify it&rdquo; became points and badges that raised anxiety. &ldquo;AI it&rdquo; is heading the same way.</blockquote>
+          <div class="section-tag">How I work</div>
+          <h2>Senior product discipline, applied to AI.</h2>
+          <blockquote>I ship LLM features that actually work &mdash; from problem definition through experimentation to rollout.</blockquote>
           <p>
-            A decade ago, the pressure was to bolt game mechanics onto learning &mdash; and we got leaderboards that undermined the very motivation they promised.
-            Today the pressure is to bolt AI onto everything. The fix is the same: design from how people actually learn &mdash; autonomy, competence, and connection &mdash;
-            and treat the technology as a tool in service of a teacher's judgment, not a replacement for it.
+            I've spent my career shipping AI products at scale: supervised-LLM tools for K&ndash;12 teachers at Amplify, Minecraft Education at Mojang, interactive learning at the Smithsonian.
+            I bring real product-management rigor &mdash; user research, KPI frameworks, experimentation, and ruthless prioritization &mdash; to AI work that too often skips it. And because I ground decisions in learning science,
+            the AI I help teams build improves outcomes, not just engagement metrics. <em>(I write about that idea under the banner &ldquo;Beyond Gamification.&rdquo;)</em>
           </p>
         </div>
       </div>
@@ -226,14 +254,14 @@
         <div class="card">
           <div class="dot" style="background:var(--peach);">&#129504;</div>
           <h3>Fractional AI Product Leadership</h3>
-          <p>Acting Head of Product or AI lead for EdTech startups &mdash; shipping LLM tools that respect learning science, a day or two a week. Roadmap, prioritization, experimentation, and team coaching.</p>
+          <p>Acting Head of Product or AI lead for EdTech startups &mdash; shipping LLM tools, a day or two a week. Roadmap, prioritization, experimentation, and team coaching, structured around the <em>AI PM Capability Stack</em>.</p>
           <span class="who">Seed &amp; Series A startups</span>
         </div>
 
         <div class="card">
           <div class="dot" style="background:var(--sage);">&#128202;</div>
-          <h3>Strategic Audits &amp; GBL Strategy</h3>
-          <p>"Beyond Gamification" product audits and roadmapping for teams and foundations &mdash; a structured review of your AI strategy and shipped features, with a prioritized plan for what to build, fix, or kill.</p>
+          <h3>AI Product Audits &amp; Strategy</h3>
+          <p>A structured review of your AI product strategy, roadmap, and shipped features &mdash; via the <em>Five-Lens Audit Stack</em> &mdash; with a prioritized plan for what to build, fix, or kill.</p>
           <span class="who">Founders &middot; Foundations &middot; Studios</span>
         </div>
 
@@ -286,8 +314,9 @@
       <h2>Building AI for learning? Let's talk.</h2>
       <p class="section-intro">Whether you're shipping an AI feature, scoping a workshop, or writing a grant &mdash; I'm happy to explore whether there's a fit.</p>
       <div class="hero-actions">
-        <a href="mailto:ry.seymour@gmail.com" class="btn btn-primary">Email me</a>
-        <a href="https://www.linkedin.com/in/ryan-seymour" class="btn btn-ghost" target="_blank" rel="noopener">Connect on LinkedIn</a>
+        <a href="https://calendly.com/ryan-seymour/intro" class="btn btn-primary" target="_blank" rel="noopener">Book a 20-min intro call</a>
+        <a href="mailto:ry.seymour@gmail.com" class="btn btn-ghost">Email me</a>
+        <a href="https://www.linkedin.com/in/ryan-seymour" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </div>
   </section>
