@@ -2,7 +2,7 @@
   <rect width="1200" height="1200" fill="#F7F4ED"/>
   <circle cx="1120" cy="160" r="300" fill="#C2CFC4" opacity="0.9"/>
   <circle cx="120" cy="1080" r="200" fill="#F0C9BD" opacity="0.9"/>
-  <text x="100" y="300" font-family="Poppins, Arial, sans-serif" font-size="34" font-weight="600" letter-spacing="4" fill="#E6A892">SEYMOUR WORKS</text>
+  <text x="100" y="300" font-family="Poppins, Arial, sans-serif" font-size="30" font-weight="600" letter-spacing="2.5" fill="#E6A892">SEYMOUR LEARNING INSIGHTS</text>
   <text x="100" y="500" font-family="Poppins, Arial, sans-serif" font-size="92" font-weight="700" fill="#2D3D43">Practical AI</text>
   <text x="100" y="610" font-family="Poppins, Arial, sans-serif" font-size="92" font-weight="700" fill="#2D3D43">for high-impact</text>
   <text x="100" y="720" font-family="Poppins, Arial, sans-serif" font-size="92" font-weight="700" fill="#2D3D43">learning.</text>
