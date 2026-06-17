@@ -3,15 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NG1T1CRRF6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NG1T1CRRF6');
+  </script>
+
+  <!-- GA4 conversion events: booking, email, contact CTAs -->
+  <script>
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a');
+      if (!a) return;
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('calendly.com') > -1) {
+        gtag('event', 'book_intro_call', { link_url: href, location: 'cta' });
+      } else if (href.indexOf('mailto:') === 0) {
+        gtag('event', 'email_click', { link_url: href });
+      } else if ((a.className || '').indexOf('nav-cta') > -1 || href === '#contact') {
+        gtag('event', 'contact_cta_click', { link_text: (a.textContent || '').trim() });
+      }
+    });
+  </script>
   <title>Seymour Learning Insights — Practical AI for High-Impact Learning | Ryan Seymour</title>
   <meta name="description" content="Ryan Seymour bridges emerging technology and learning science — helping EdTech teams, foundations, and educators ship AI that actually improves how people learn. Fractional AI product leadership, team upskilling, and educator enablement." />
+  <meta name="author" content="Ryan Seymour" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#2D3D43" />
+  <link rel="canonical" href="https://seymourlearning.com/" />
 
   <!-- Open Graph / social -->
   <meta property="og:title" content="Seymour Learning Insights — Practical AI for High-Impact Learning" />
-  <meta property="og:description" content="Bridging emerging technology and learning science. Fractional AI product leadership, strategic audits, and educator enablement." />
+  <meta property="og:description" content="Bridging emerging technology and learning science. Fractional AI product leadership, AI upskilling for product teams, and educator enablement." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="og-image.png" />
+  <meta property="og:url" content="https://seymourlearning.com/" />
+  <meta property="og:site_name" content="Seymour Learning Insights" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:image" content="https://seymourlearning.com/og-image.png" />
+  <meta property="og:image:alt" content="Seymour Learning Insights — Practical AI for high-impact learning" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Seymour Learning Insights — Practical AI for High-Impact Learning" />
+  <meta name="twitter:description" content="Bridging emerging technology and learning science. Fractional AI product leadership, AI upskilling, and educator enablement." />
+  <meta name="twitter:image" content="https://seymourlearning.com/og-image.png" />
+
+  <!-- Structured data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://seymourlearning.com/#business",
+        "name": "Seymour Learning Insights",
+        "url": "https://seymourlearning.com/",
+        "image": "https://seymourlearning.com/og-image.png",
+        "description": "Practical AI for high-impact learning. Fractional AI product leadership, AI upskilling for product teams, and educator enablement workshops for EdTech companies, foundations, and educators.",
+        "founder": { "@id": "https://seymourlearning.com/#ryan" },
+        "areaServed": "US",
+        "email": "rseymour@seymourlearning.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Arlington",
+          "addressRegion": "VA",
+          "addressCountry": "US"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/ryan-seymour",
+          "https://ryseymour.substack.com"
+        ],
+        "knowsAbout": ["AI in education", "EdTech product management", "Game-based learning", "Learning science", "Educator professional development", "AI upskilling for product teams"]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://seymourlearning.com/#ryan",
+        "name": "Ryan Seymour",
+        "jobTitle": "Founder & AI Product Consultant",
+        "worksFor": { "@id": "https://seymourlearning.com/#business" },
+        "url": "https://seymourlearning.com/",
+        "image": "https://seymourlearning.com/ryan-seymour.jpg",
+        "description": "AI product leader, game designer, and former classroom teacher who has shipped AI-powered learning tools at Amplify, Minecraft Education at Mojang, and the Smithsonian Science Education Center.",
+        "alumniOf": "American University",
+        "knowsAbout": ["Artificial intelligence in education", "Product management", "Game design", "Learning science", "EdTech"],
+        "sameAs": [
+          "https://www.linkedin.com/in/ryan-seymour",
+          "https://ryseymour.substack.com"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://seymourlearning.com/#website",
+        "url": "https://seymourlearning.com/",
+        "name": "Seymour Learning Insights",
+        "publisher": { "@id": "https://seymourlearning.com/#business" }
+      }
+    ]
+  }
+  </script>
 
   <!-- Favicon (inline SVG monogram — no file needed) -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232D3D43'/%3E%3Ctext x='16' y='22' font-family='Poppins,sans-serif' font-size='15' font-weight='700' fill='%23F0C9BD' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E" />
@@ -27,9 +117,11 @@
       --slate: #2D3D43;
       --slate-soft: #4A5C63;
       --sage: #C2CFC4;
-      --sage-deep: #9DB1A2;
+      --sage-deep: #647C6E;
+      --sage-soft: #9DB1A2;
       --peach: #F0C9BD;
       --peach-deep: #E6A892;
+      --terracotta: #B85C3C;
       --line: #E4DFD4;
       --radius: 18px;
       --maxw: 1080px;
@@ -64,8 +156,8 @@
       display: flex; align-items: center; justify-content: space-between;
       height: 64px;
     }
-    .brand { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
-    .brand span { color: var(--peach-deep); }
+    .brand { font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; min-width: 0; }
+    .brand span { color: var(--terracotta); }
     .nav-links { display: flex; gap: 28px; align-items: center; }
     .nav-links a {
       text-decoration: none; font-size: 0.95rem; font-weight: 500;
@@ -75,10 +167,19 @@
     .nav-cta {
       background: var(--slate); color: var(--cream) !important;
       padding: 9px 18px; border-radius: 999px; font-weight: 600 !important;
+      white-space: nowrap; flex-shrink: 0;
     }
     .nav-cta:hover { background: var(--slate-soft); }
     @media (max-width: 680px) { .nav-links { gap: 14px; } .nav-links a:not(.nav-cta) { font-size: 0.82rem; } }
-    @media (max-width: 460px) { .nav-links a:not(.nav-cta) { display: none; } }
+    @media (max-width: 460px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .brand { font-size: 1rem; }
+      .nav-cta { padding: 8px 15px; font-size: 0.88rem; }
+    }
+    @media (max-width: 360px) {
+      .brand { font-size: 0.9rem; }
+      .nav-cta { padding: 7px 13px; font-size: 0.83rem; }
+    }
 
     /* ---------- TRUST STRIP ---------- */
     .trust-strip { border-bottom: 1px solid var(--line); background: var(--cream-2); padding: 22px 0; }
@@ -99,7 +200,8 @@
     .eyebrow {
       display: inline-block; font-weight: 600; font-size: 0.85rem;
       letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--peach-deep); margin-bottom: 18px;
+      color: var(--terracotta); margin-bottom: 18px;
+      text-shadow: 0 1px 1px rgba(45,61,67,0.12);
     }
     .hero h1 {
       font-size: clamp(2.4rem, 5.5vw, 4rem); font-weight: 700;
@@ -156,7 +258,7 @@
     .card .dot { width: 38px; height: 38px; border-radius: 11px; display: grid; place-items: center; font-size: 1.2rem; margin-bottom: 16px; }
     .card h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
     .card p { color: var(--slate-soft); font-size: 0.98rem; }
-    .card .who { display: block; margin-top: 14px; font-size: 0.82rem; font-weight: 600; color: var(--sage-deep); text-transform: uppercase; letter-spacing: 0.05em; }
+    .card .who { display: block; margin-top: 14px; font-size: 0.82rem; font-weight: 600; color: var(--sage-soft); text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* about */
     .about { background: var(--sage); border-radius: var(--radius); }
@@ -191,10 +293,11 @@
     <div class="wrap">
       <div class="brand">Seymour Learning<span>&nbsp;Insights</span></div>
       <div class="nav-links">
-        <a href="#thesis">Why me</a>
+        <a href="#thesis">Why Me</a>
         <a href="#work">What I Do</a>
         <a href="#about">About</a>
-        <a href="https://ryseymour.substack.com" target="_blank" rel="noopener">Writing</a>
+        <a href="https://ryseymour.substack.com" target="_blank" rel="noopener">Substack</a>
+        <a href="https://github.com/ryseymour/teacher-deck-skill" target="_blank" rel="noopener">Free Resources</a>
         <a href="#contact" class="nav-cta">Get in touch</a>
       </div>
     </div>
@@ -347,7 +450,8 @@
     <div class="wrap">
       <div>&copy; 2026 Seymour Learning Insights &middot; Arlington, Virginia</div>
       <div>
-        <a href="https://ryseymour.substack.com" target="_blank" rel="noopener">Writing</a> &middot;
+        <a href="https://ryseymour.substack.com" target="_blank" rel="noopener">Substack</a> &middot;
+        <a href="https://github.com/ryseymour/teacher-deck-skill" target="_blank" rel="noopener">Free Resources</a> &middot;
         <a href="mailto:rseymour@seymourlearning.com">rseymour@seymourlearning.com</a>
       </div>
     </div>
