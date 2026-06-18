@@ -13,7 +13,7 @@ Hosting: **Cloudflare Pages** (project deleted while Ryan is still at Amplify; r
   **Zone:DNS:Edit** API token (create per-use, revoke after).
 
 ## TO RELAUNCH (turn the site back on)
-1. Run: `bash ~/Documents/beyond-gamification-site/redeploy.sh`
+1. Run: `bash ~/seymour-learning-insights-site/redeploy.sh`
    (creates project, deploys files, re-attaches custom domains)
 2. Recreate the two DNS records (needs a Zone:DNS:Edit token):
    - `CNAME  seymourlearning.com  -> seymourlearning.pages.dev`  (Proxy ON)
@@ -31,4 +31,4 @@ Fastest path: just tell Claude "put the site back up," create a DNS token when a
 
 ## Source of truth
 The site is `index.html` (+ og-image.png/svg, ryan-seymour.jpg) in this repo, also on GitHub
-(`ryseymour/beyond-gamification-site`). Edit → run redeploy.sh to push live.
+(`ryseymour/seymour-learning-insights-site`). Edit → run redeploy.sh to push live.
