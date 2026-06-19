@@ -19,10 +19,17 @@
       var a = e.target.closest && e.target.closest('a');
       if (!a) return;
       var href = a.getAttribute('href') || '';
+      // Where on the page the click happened — both Substack and Free Resources
+      // appear in the nav and the footer, so this shows which placement converts.
+      var where = a.closest('nav') ? 'nav' : (a.closest('footer') ? 'footer' : 'body');
       if (href.indexOf('calendly.com') > -1) {
         gtag('event', 'book_intro_call', { link_url: href, location: 'cta' });
       } else if (href.indexOf('mailto:') === 0) {
         gtag('event', 'email_click', { link_url: href });
+      } else if (href.indexOf('substack.com') > -1) {
+        gtag('event', 'substack_click', { link_url: href, location: where });
+      } else if (href.indexOf('teacher-deck-skill') > -1) {
+        gtag('event', 'free_resources_click', { link_url: href, location: where });
       } else if ((a.className || '').indexOf('nav-cta') > -1 || href === '#contact') {
         gtag('event', 'contact_cta_click', { link_text: (a.textContent || '').trim() });
       }
