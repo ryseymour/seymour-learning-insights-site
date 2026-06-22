@@ -30,6 +30,8 @@
         gtag('event', 'substack_click', { link_url: href, location: where });
       } else if (href.indexOf('teacher-deck-skill') > -1) {
         gtag('event', 'free_resources_click', { link_url: href, location: where });
+      } else if (href.indexOf('reading-level-differentiator') > -1) {
+        gtag('event', 'differentiator_click', { link_url: href, location: where });
       } else if ((a.className || '').indexOf('nav-cta') > -1 || href === '#contact') {
         gtag('event', 'contact_cta_click', { link_text: (a.textContent || '').trim() });
       }
@@ -341,7 +343,7 @@
           <button class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">Free Resources</button>
           <div class="nav-dropdown-menu" role="menu">
             <a href="https://github.com/ryseymour/teacher-deck-skill" target="_blank" rel="noopener" role="menuitem">AI Lesson Deck Builder</a>
-            <span class="nav-dropdown-soon" role="menuitem" aria-disabled="true">Reading-Level Differentiator <em>Coming soon</em></span>
+            <a href="https://github.com/ryseymour/reading-level-differentiator" target="_blank" rel="noopener" role="menuitem">Reading-Level Differentiator</a>
           </div>
         </div>
         <a href="#contact" class="nav-cta">Get in touch</a>
