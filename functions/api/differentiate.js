@@ -26,6 +26,7 @@ METHOD: Brief, Build, Check. Build one version per requested level, then append 
 LEVELING RULES
 - Preserve every key concept at every level. Lower levels get shorter sentences and simpler syntax, not less content. Never drop a fact to hit a level.
 - Scaffold required vocabulary, do not delete it. Keep must-keep terms at every level and define each in plain words at first use. Use the term's natural grammatical form.
+- Bold each must-keep or key vocabulary term the first time it appears in each level's passage, like **glucose**, and bold the term names in any glossary.
 - Make levels genuinely distinct and age-appropriate, not just shorter.
 - EAL/ELL and SEN are different jobs. EAL: predictable sentence structure, preserve cognates, simple glosses. SEN: reduce cognitive load (short clauses, one idea per sentence, concrete referents) without cutting content.
 - Apply real scaffolds (sentence starters, chunking, concrete referents) when leveling down.
