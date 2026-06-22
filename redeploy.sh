@@ -13,6 +13,10 @@ ACCT="15e0abec0db293b103f8344a442a17dc"
 echo "==> Building clean publish dir"
 rm -rf "$PUB"; mkdir -p "$PUB"
 cp "$SITE_DIR/index.html" "$SITE_DIR/og-image.png" "$SITE_DIR/og-image.svg" "$SITE_DIR/ryan-seymour.jpg" "$SITE_DIR/robots.txt" "$SITE_DIR/sitemap.xml" "$PUB/"
+# Tool pages (static) and Pages Functions (serverless /api/*). functions/ must sit
+# at the publish-dir root for Cloudflare Pages to pick it up.
+[ -d "$SITE_DIR/tools" ] && cp -R "$SITE_DIR/tools" "$PUB/"
+[ -d "$SITE_DIR/functions" ] && cp -R "$SITE_DIR/functions" "$PUB/"
 
 echo "==> Creating Pages project (ok if it already exists)"
 npx --yes wrangler pages project create "$PROJECT" --production-branch=main 2>/dev/null || true

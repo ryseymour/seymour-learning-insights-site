@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reading-Level Differentiator — Seymour Learning Insights</title>
+<meta name="description" content="Paste a passage, get it rewritten at multiple reading levels in your format, with a checklist of what to verify. A free tool from Seymour Learning Insights." />
+<meta name="robots" content="noindex" />
+<style>
+  :root{
+    --slate:#2D3D43; --slate-soft:#4A5C63; --sage:#C2CFC4; --sage-soft:#9DB1A2;
+    --terracotta:#B85C3C; --cream:#F7F4ED; --cream-2:#F0EBE0; --line:#E4DFD4; --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--cream);color:var(--slate);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;line-height:1.55;}
+  a{color:var(--terracotta);}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px;}
+  header{border-bottom:1px solid var(--line);padding:16px 0;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  .brand{font-weight:700;}
+  .brand span{color:var(--terracotta);}
+  h1{font-size:1.7rem;margin:28px 0 6px;}
+  .lede{color:var(--slate-soft);margin:0 0 24px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px;margin-bottom:18px;}
+  label{display:block;font-size:0.85rem;font-weight:600;color:var(--slate-soft);margin:14px 0 6px;}
+  label:first-child{margin-top:0;}
+  input,textarea,select{width:100%;font:inherit;color:var(--slate);background:var(--cream);border:1px solid var(--line);border-radius:10px;padding:10px 12px;}
+  textarea{resize:vertical;}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .hint{font-size:0.78rem;color:var(--sage-soft);margin-top:4px;}
+  button{font:inherit;font-weight:600;cursor:pointer;border:none;border-radius:999px;padding:11px 22px;background:var(--slate);color:var(--cream);}
+  button:hover{background:var(--slate-soft);}
+  button:disabled{opacity:0.55;cursor:default;}
+  #status{margin-left:12px;color:var(--slate-soft);font-size:0.9rem;}
+  #error{color:var(--terracotta);font-size:0.9rem;margin-top:10px;}
+  #out{white-space:pre-wrap;font-size:0.95rem;line-height:1.6;}
+  #outwrap{display:none;}
+  .out-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;}
+  .copy{background:none;color:var(--slate-soft);border:1px solid var(--line);padding:6px 14px;font-size:0.85rem;}
+  .copy:hover{background:var(--cream-2);color:var(--slate);}
+  footer{border-top:1px solid var(--line);margin-top:30px;padding:20px 0;color:var(--slate-soft);font-size:0.9rem;}
+  .note{font-size:0.82rem;color:var(--slate-soft);margin-top:8px;}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand">Seymour Learning<span>&nbsp;Insights</span></div>
+  <a href="/" style="font-size:0.9rem;">Home</a>
+</div></header>
+
+<main class="wrap">
+  <h1>Reading-Level Differentiator</h1>
+  <p class="lede">Paste a passage and get it rewritten at the levels your class needs, in your format, with a short list of what to check before you use it. Works across subjects.</p>
+
+  <div class="card">
+    <label for="email">Your email <span style="font-weight:400;color:var(--sage-soft);">(free to use, unlocks the tool)</span></label>
+    <input id="email" type="email" placeholder="you@school.edu" autocomplete="email" />
+
+    <label for="source">Source passage</label>
+    <textarea id="source" rows="5" placeholder="Paste the text you want to differentiate. Remove any student names or IEP details first."></textarea>
+
+    <div class="row">
+      <div>
+        <label for="levels">Reading levels</label>
+        <input id="levels" type="text" placeholder="grades 4, 6, 8" />
+        <div class="hint">Grade bands, Lexile (500L), or guided reading. Approximate; spot-check with your tool.</div>
+      </div>
+      <div>
+        <label for="keep">Keep these terms <span style="font-weight:400;">(optional)</span></label>
+        <input id="keep" type="text" placeholder="photosynthesis, chlorophyll" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label for="need">Learner need <span style="font-weight:400;">(optional)</span></label>
+        <select id="need">
+          <option value="">None specified</option>
+          <option value="EAL / multilingual learners">EAL / multilingual</option>
+          <option value="SEN">SEN</option>
+        </select>
+      </div>
+      <div>
+        <label for="format">Your worksheet format <span style="font-weight:400;">(optional)</span></label>
+        <input id="format" type="text" placeholder="Title / Passage / Glossary / 2 questions" />
+      </div>
+    </div>
+
+    <div style="margin-top:18px;display:flex;align-items:center;">
+      <button id="go">Generate</button>
+      <span id="status"></span>
+    </div>
+    <div id="error"></div>
+  </div>
+
+  <div class="card" id="outwrap">
+    <div class="out-head">
+      <strong>Differentiated versions</strong>
+      <button class="copy" id="copy">Copy</button>
+    </div>
+    <div id="out"></div>
+    <div class="note">A draft for your judgment. You decide whether each level fits your students and any IEP or language plan.</div>
+  </div>
+</main>
+
+<footer><div class="wrap">
+  Want this across all five lesson-prep tasks, with your team? <a href="/#contact">Book a workshop</a>. &nbsp;·&nbsp; New writing at <a href="https://ryseymour.substack.com" target="_blank" rel="noopener">the Substack</a>.
+</div></footer>
+
+<script>
+  var go = document.getElementById('go');
+  var statusEl = document.getElementById('status');
+  var errEl = document.getElementById('error');
+  var outwrap = document.getElementById('outwrap');
+  var out = document.getElementById('out');
+
+  go.addEventListener('click', async function () {
+    errEl.textContent = '';
+    var payload = {
+      email: document.getElementById('email').value,
+      source: document.getElementById('source').value,
+      levels: document.getElementById('levels').value,
+      keepVocab: document.getElementById('keep').value,
+      learnerNeed: document.getElementById('need').value,
+      format: document.getElementById('format').value
+    };
+    go.disabled = true; statusEl.textContent = 'Generating…';
+    try {
+      var res = await fetch('/api/differentiate', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      var data = await res.json();
+      if (!res.ok) { throw new Error(data.error || 'Something went wrong.'); }
+      out.textContent = data.output || '';
+      outwrap.style.display = 'block';
+      statusEl.textContent = '';
+      outwrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } catch (e) {
+      statusEl.textContent = '';
+      errEl.textContent = e.message;
+    } finally {
+      go.disabled = false;
+    }
+  });
+
+  document.getElementById('copy').addEventListener('click', function () {
+    navigator.clipboard.writeText(out.textContent).then(function () {
+      var b = document.getElementById('copy'); b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1500);
+    });
+  });
+</script>
+</body>
+</html>
