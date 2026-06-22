@@ -7,7 +7,7 @@
 //   3. Add KV-based per-IP rate limiting (see the rate-limit TODO) before linking it publicly.
 //   4. Set a hard monthly spend cap on the Anthropic account as the circuit breaker.
 
-const MODEL = "claude-haiku-4-5"; // swap after the model test
+const MODEL = "claude-sonnet-4-6"; // chosen via model test: Haiku flunked the no-em-dash / anti-tells bar (8 em-dashes); Sonnet passed clean
 const MAX_OUTPUT_TOKENS = 1500;
 const MAX_SOURCE_CHARS = 6000;
 
