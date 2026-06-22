@@ -162,5 +162,14 @@ export async function onRequestPost(context) {
     );
   }
 
+  // Funnel: capture the email on a successful generation (deduped by email key).
+  // Consent is shown on the page. Never block the teacher if the write fails.
+  if (env.LEADS) {
+    try {
+      const e = email.trim().toLowerCase();
+      await env.LEADS.put("email:" + e, JSON.stringify({ email: e, ts: Date.now() }));
+    } catch (_) {}
+  }
+
   return json({ output });
 }
