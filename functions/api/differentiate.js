@@ -10,6 +10,8 @@
 const MODEL = "claude-sonnet-4-6"; // chosen via model test: Haiku flunked the no-em-dash / anti-tells bar (8 em-dashes); Sonnet passed clean
 const MAX_OUTPUT_TOKENS = 1500;
 const MAX_SOURCE_CHARS = 6000;
+const RL_MAX = 8;              // generations allowed per IP per window
+const RL_WINDOW_SECONDS = 3600; // window length (1 hour)
 
 const SYSTEM_PROMPT = `You rewrite a classroom passage at multiple reading levels. Follow this exactly.
 
@@ -87,9 +89,21 @@ export async function onRequestPost(context) {
     return json({ error: "Enter the target reading levels (e.g. grades 4, 6, 8)." }, 400);
   }
 
-  // TODO (required before public launch): per-IP rate limit via a KV namespace.
-  // const ip = request.headers.get("cf-connecting-ip"); check/increment a KV counter.
-  // TODO: capture `email` to a KV namespace or the Substack API for the funnel.
+  // Per-IP rate limit. Graceful no-op if the RATE_LIMIT KV binding isn't attached.
+  if (env.RATE_LIMIT) {
+    const ip = request.headers.get("cf-connecting-ip") || "unknown";
+    const rlKey = `rl:${ip}`;
+    const used = parseInt((await env.RATE_LIMIT.get(rlKey)) || "0", 10);
+    if (used >= RL_MAX) {
+      return json(
+        { error: "You've reached the hourly limit for this free tool. Please try again later." },
+        429
+      );
+    }
+    await env.RATE_LIMIT.put(rlKey, String(used + 1), { expirationTtl: RL_WINDOW_SECONDS });
+  }
+
+  // TODO (funnel): capture `email` to a KV namespace or the Substack API, with consent copy.
 
   const userContent =
     `Source passage:\n${source.trim()}\n\nTarget levels: ${levels.trim()}` +
