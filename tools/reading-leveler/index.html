@@ -3,6 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NG1T1CRRF6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NG1T1CRRF6');
+</script>
 <title>Reading-Level Differentiator — Seymour Learning Insights</title>
 <meta name="description" content="Paste a passage, get it rewritten at multiple reading levels in your format, with a checklist of what to verify. A free tool from Seymour Learning Insights." />
 <meta name="robots" content="noindex" />
@@ -150,21 +157,29 @@
       format: document.getElementById('format').value
     };
     go.disabled = true; statusEl.textContent = 'Generating…';
+    var resStatus = 0;
     try {
       var res = await fetch('/api/differentiate', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      resStatus = res.status;
       var data = await res.json();
       if (!res.ok) { throw new Error(data.error || 'Something went wrong.'); }
       out.innerHTML = renderMarkdown(data.output || '');
       outwrap.style.display = 'block';
       statusEl.textContent = '';
+      if (window.gtag) gtag('event', 'differentiation_generated', {
+        levels: payload.levels,
+        learner_need: payload.learnerNeed || 'none',
+        has_format: payload.format ? 'yes' : 'no'
+      });
       outwrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (e) {
       statusEl.textContent = '';
       errEl.textContent = e.message;
+      if (window.gtag) gtag('event', resStatus === 422 ? 'differentiation_blocked' : 'tool_error', { status: resStatus });
     } finally {
       go.disabled = false;
     }
