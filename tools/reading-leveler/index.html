@@ -72,6 +72,7 @@
 
     <label for="source">Source passage</label>
     <textarea id="source" rows="5" placeholder="Paste the text you want to differentiate. Remove any student names or IEP details first."></textarea>
+    <div class="hint">Use curriculum or instructional text only. Do not paste student names, IEP or 504 details, or any personally identifiable student information.</div>
 
     <div class="row">
       <div>
@@ -105,6 +106,7 @@
       <span id="status"></span>
     </div>
     <div id="error"></div>
+    <div class="hint" style="margin-top:12px;">Output is an AI-generated draft to review and edit before classroom use. By using this tool you agree to the <a href="#terms">Terms of Use &amp; Privacy Notice</a>.</div>
   </div>
 
   <div class="card" id="outwrap">
@@ -115,6 +117,19 @@
     <div id="out"></div>
     <div class="note">A draft for your judgment. You decide whether each level fits your students and any IEP or language plan.</div>
   </div>
+
+  <section id="terms" style="margin-top:24px;">
+    <details>
+      <summary style="cursor:pointer;font-weight:600;color:var(--slate-soft);font-size:0.9rem;">Terms of Use &amp; Privacy Notice</summary>
+      <div style="font-size:0.82rem;color:var(--slate-soft);margin-top:12px;line-height:1.6;">
+        <p><strong>Output is a draft.</strong> This is an AI assistant for text differentiation. All output is provided "as is," with no warranty of accuracy or completeness. You, the educator, are responsible for reviewing, verifying, and editing every passage before using it with students.</p>
+        <p><strong>Your input text.</strong> By submitting text you confirm you have the right or permission to use it, including any applicable Fair Use. Seymour Learning Insights claims no ownership of your input or the output. We do not store the passages you submit. They are sent to our AI provider (Anthropic) to generate your result and are not saved on our servers.</p>
+        <p><strong>Student privacy (FERPA).</strong> Do not enter student names, IEP or 504 details, or any personally identifiable student information. Use curriculum and instructional text only. This tool is intended for educators, not for direct use by students.</p>
+        <p><strong>What we keep.</strong> We store the email you provide to add you to the Seymour Learning Insights newsletter (unsubscribe anytime), and we temporarily record your IP address to limit how often this free tool is used. We do not keep the passages you submit.</p>
+        <p>This notice is general information, not legal advice.</p>
+      </div>
+    </details>
+  </section>
 </main>
 
 <footer><div class="wrap">
