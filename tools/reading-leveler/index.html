@@ -106,7 +106,7 @@
       <span id="status"></span>
     </div>
     <div id="error"></div>
-    <div class="hint" style="margin-top:12px;">Output is an AI-generated draft to review and edit before classroom use. By using this tool you agree to the <a href="#terms">Terms of Use &amp; Privacy Notice</a>.</div>
+    <div class="hint" style="margin-top:12px;">Output is an AI-generated draft to review and edit before classroom use. By using this tool you agree to the <a href="#terms" onclick="var d=document.getElementById('terms-details'); if(d){d.open=true;}">Terms of Use &amp; Privacy Notice</a>.</div>
   </div>
 
   <div class="card" id="outwrap">
@@ -119,7 +119,7 @@
   </div>
 
   <section id="terms" style="margin-top:24px;">
-    <details>
+    <details id="terms-details">
       <summary style="cursor:pointer;font-weight:600;color:var(--slate-soft);font-size:0.9rem;">Terms of Use &amp; Privacy Notice</summary>
       <div style="font-size:0.82rem;color:var(--slate-soft);margin-top:12px;line-height:1.6;">
         <p><strong>Output is a draft.</strong> This is an AI assistant for text differentiation. All output is provided "as is," with no warranty of accuracy or completeness. You, the educator, are responsible for reviewing, verifying, and editing every passage before using it with students.</p>
